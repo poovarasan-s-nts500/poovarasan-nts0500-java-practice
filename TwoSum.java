@@ -12,12 +12,23 @@ public class TwoSum {
             complementryMap.put(nums[i], i);
         }
 
-        return new int[] {};
+        return new int[] { -1, -1 };
+    }
+
+    static int[] get_index_for_two_sum_by_iterative(int[] nums, int target) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = 1 + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target)
+                    return new int[] { i, j };
+            }
+        }
+        return new int[] { -1, -1 };
     }
 
     public static void main(String[] args) {
         int[] nums = { 2, 10, 7, 15 };
         int target = 9;
+        // int[] result = get_index_for_two_sum_by_iterative(nums, target);
         int[] result = get_index_for_two_sum(nums, target);
         System.out.println("[" + result[0] + ", " + result[1] + "]");
     }
