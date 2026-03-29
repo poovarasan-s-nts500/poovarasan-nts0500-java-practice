@@ -21,6 +21,41 @@ public class TransposeMatrix {
     // 11 12 13
     // 22 23
     // 33
+
+    // 00 01 02 03
+    // 10 11 12 13
+    // 20 21 22 23
+    // 30 31 32 33
+
+    // After Transpose the First line
+    // 00 10 20 30
+    // 01
+    // 02
+    // 03
+
+    // We need to transpose now the reamaining
+    // -- -- -- --
+    // -- 11 12 13
+    // -- 21 22 23
+    // -- 31 32 33
+
+    // Next Remaining
+    // -- -- -- --
+    // -- -- -- --
+    // -- -- 22 23
+    // -- -- 32 33
+
+    // Next
+    // -- -- -- --
+    // -- -- -- --
+    // -- -- -- --
+    // -- -- -- 33
+
+    // The pattern (Loops starts in the diagonal place like 00, 11, 22, ...)
+    // 00 01 02 03
+    // 11 12 13
+    // 22 23
+    // 33
 }
 
 // Q15. Transpose a Matrix​

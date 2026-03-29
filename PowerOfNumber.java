@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class PowerOfNumber {
 
     public static int power(int base, int exp) {
@@ -21,36 +18,27 @@ public class PowerOfNumber {
     }
 
     public static int exponentiation_by_squaring(int base, int exp) {
-        if (base == 0)
-            return 0;
+        if (exp == 0)
+            return 1;
 
-        ArrayList<Integer> binaryDigits = new ArrayList<>();
+        if (exp == 1)
+            return base;
 
-        // 120 1 2 4 8 16 32 64
-        // 1111000
-
-        // 6^14
-        // 14 -> 0111 --> 1110 8 4 2
-        // 6^1 = 6
-        // 6^2 = 36
-        // 6^4 = 36^36 1296
-        // 6^8 = 1296^1296 1679616
-
-        // 1679616 * 1296 * 36
-
-        HashMap<Integer, Integer> powerAndValue = new HashMap<>();
-        int updatingExp = 1;
-        while (updatingExp < exp) {
-            powerAndValue.put(updatingExp, base);
+        int half = exponentiation_by_squaring(base, exp / 2);
+        
+        if (exp % 2 == 0) {
+            return half * half;
+        } else {
+            return base * half * half;
         }
 
-        return 0;
     }
 
     public static void main(String[] args) {
         int base = 0;
-        int exp = 0;
-        System.out.println(power(base, exp));
+        int exp = 2;
+        // System.out.println(power(base, exp));
+        System.out.println(exponentiation_by_squaring(base, exp));
     }
 }
 
@@ -60,3 +48,7 @@ public class PowerOfNumber {
 // using the "fast exponentiation" (exponentiation by squaring) approach.
 // power(2, 10) → 1024​
 // power(3, 5) → 243
+
+// APPROCH
+// n is even then a^n = (a ^ n/2) ^ 2
+// n is odd then a^n = a * a^n-1 --> its just -1 to get a even number
